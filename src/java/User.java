@@ -23,8 +23,8 @@ import javax.servlet.http.Part;
  * @author himan
  */
 public class User{
-    private InputStream inputStream;
-    private String fname,lname,age, gender, contact, disease, location , email, password;  
+    private InputStream photo;
+    private String email1, email2, fname,lname,age, gender, contact, disease, location , email, password, message;  
 public String getFName() {  
     return fname;  
 }  
@@ -76,13 +76,27 @@ public void setPassword(String password) {
     return password;  
 }
 public void setImage(InputStream photo){
-    this.inputStream = inputStream;
+    this.photo = photo;
 }
 public InputStream getImage(){
-    return inputStream;
+    return photo;
 }
-
-   
+public void setMessage(String message){
+    this.message= message;
+}
+public String getMessage(){
+    return message;
+}
+public void setEmail1(String email1) {  
+      this.email1=email1;
+}public String getEmail1() {  
+    return email1;  
+}
+ public void setEmail2(String email2) {  
+      this.email2=email2;
+}public String getEmail2() {  
+    return email2;  
+}  
 
 }
 

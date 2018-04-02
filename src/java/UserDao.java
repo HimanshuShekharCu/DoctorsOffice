@@ -35,38 +35,42 @@ public class UserDao {
           
         return status;  
     }  
-    public static int update(Emp e){  
-        int status=0;  
-        try{  
-            Connection con=EmpDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement(  
-                         "update user905 set name=?,password=?,email=?,country=? where id=?");  
-            ps.setString(1,e.getName());  
-            ps.setString(2,e.getPassword());  
-            ps.setString(3,e.getEmail());  
-            ps.setString(4,e.getCountry());  
-            ps.setInt(5,e.getId());  
+    public static int setMessages(User e){
+        int status = 0;
+        try {
+        Connection con = UserDao.getConnection();
+        String sql = "UPDATE chat SET message=? WHERE email=?";
+        PreparedStatement ps = con.prepareCall(sql);
+        ps.setString(1, e.getMessage());
+        ps.setString(2, e.getEmail());
+        
+        }catch(SQLException ex ){
+        ex.printStackTrace();
+        }
+        return status;
+    }
+    public static User getMessages(){
+        User e = new User();
+       
+        try {
+        Connection con = UserDao.getConnection();
+        String sql = "select * from chat where email=?";
+        PreparedStatement ps = con.prepareStatement(sql);
+        
+        ps.setString(1, e.getEmail());
+        ResultSet rs= ps.executeQuery();
+        if(rs.next()){  
+                e.setMessage(rs.getString("message"));
               
-            status=ps.executeUpdate();  
-              
-            con.close();  
-        }catch(Exception ex){ex.printStackTrace();}  
-          
-        return status;  
-    }  
-    public static int delete(int id){  
-        int status=0;  
-        try{  
-            Connection con=EmpDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("delete from user905 where id=?");  
-            ps.setInt(1,id);  
-            status=ps.executeUpdate();  
-              
-            con.close();  
-        }catch(Exception e){e.printStackTrace();}  
-          
-        return status;  
-    }  
+            }  
+        
+        }catch(SQLException ex ){
+        ex.printStackTrace();
+        }
+        return e;
+    }
+    
+    
     public static User getUserByEmail(String email){  
         User e=new User();  
           
@@ -92,25 +96,5 @@ public class UserDao {
           
         return e;  
     }  
-    public static List<Emp> getAllEmployees(){  
-        List<Emp> list=new ArrayList<Emp>();  
-          
-        try{  
-            Connection con=EmpDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905");  
-            ResultSet rs=ps.executeQuery();  
-            while(rs.next()){  
-                Emp e=new Emp();  
-                e.setId(rs.getInt(1));  
-                e.setName(rs.getString(2));  
-                e.setPassword(rs.getString(3));  
-                e.setEmail(rs.getString(4));  
-                e.setCountry(rs.getString(5));  
-                list.add(e);  
-            }  
-            con.close();  
-        }catch(Exception e){e.printStackTrace();}  
-          
-        return list;  
-    }  
+      
 }  

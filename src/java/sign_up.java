@@ -45,9 +45,11 @@ public class sign_up extends HttpServlet {
             String password = request.getParameter("password");
             Part photo = request.getPart("photo");
             InputStream inputStream = null;
-            if (photo != null) {
+            if (photo!= null) {
             // prints out some information for debugging
-             
+            System.out.println(photo.getName());
+            System.out.println(photo.getSize());
+            System.out.println(photo.getContentType()); 
             // obtains input stream of the upload file
              inputStream = photo.getInputStream();
         }
