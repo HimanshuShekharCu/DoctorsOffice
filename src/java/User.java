@@ -1,3 +1,7 @@
+
+import java.io.InputStream;
+import javax.servlet.http.Part;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,7 +23,7 @@
  * @author himan
  */
 public class User{
-  
+    private InputStream inputStream;
     private String fname,lname,age, gender, contact, disease, location , email, password;  
 public String getFName() {  
     return fname;  
@@ -40,9 +44,10 @@ public void setAge(String age) {
 public String getAge() {  
     return age;  
 }  
-public void setGender(String fname) {  
+public void setGender(String gender) {  
       this.gender=gender;
-}public String getGender() {  
+}
+public String getGender() {  
     return gender;  
 }  
 public void setContact(String contact) {  
@@ -69,7 +74,15 @@ public void setPassword(String password) {
       this.password=password;
 }public String getPassword() {  
     return password;  
-}  
+}
+public void setImage(InputStream photo){
+    this.inputStream = inputStream;
+}
+public InputStream getImage(){
+    return inputStream;
+}
+
+   
 
 }
 

@@ -16,7 +16,7 @@ public class UserDao {
         try{  
             Connection con=UserDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "insert into usr(fname,lname,age,gender,contact,disease,location,email,password) values (?,?,?,?,?,?,?,?,?)");  
+                         "insert into usr(fname,lname,age,gender,contact,disease,location,email,password,photo) values (?,?,?,?,?,?,?,?,?,?)");  
             ps.setString(1,e.getFName());
             ps.setString(2,e.getLName());
             ps.setString(3,e.getAge());
@@ -26,6 +26,7 @@ public class UserDao {
             ps.setString(7,e.getLocation());
             ps.setString(8,e.getEmail());
             ps.setString(9,e.getPassword());
+            ps.setBlob(10,e.getImage());
               
             status=ps.executeUpdate();  
               

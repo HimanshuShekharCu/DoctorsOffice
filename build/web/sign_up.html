@@ -54,27 +54,29 @@
       <div class="row jumbotron">
           <div class="col-sm-4"></div> 
           <div class="col-sm-4">
-              <form action="sign_up" method="post">
+              <form action="sign_up" method="post" enctype="multipart/form-data">
                 <h1 class="h3 mb-3 font-weight-normal">Sign up here</h1>
-                <div class="label text-primary" for="inputFName" class="sr-only">First Name</div>
+                <label for="inputFName" class="sr-only">Last Name</label>
                 <input name="fname" type="text" id="inputFName" class="form-control" placeholder="First Name" required autofocus>
                 <label for="inputLName" class="sr-only">Last Name</label>
-                <input name="lname" type="text" id="inputFName" class="form-control" placeholder="Last Name" required autofocus>
-                <label for="inputFName" class="sr-only">Age</label>
-                <input type="text" name="age" id="inputFName" class="form-control" placeholder="Age" required autofocus>
-                <label for="inputFName"  class="sr-only">Gender</label>
-                <input name="gender" type="text" id="inputFName" class="form-control" placeholder="Gender" required autofocus>
-                <label for="inputFName" class="sr-only">Contact</label>
-                <input name="contact" type="text" id="inputFName" class="form-control" placeholder="Contact" required autofocus><label for="inputFName" class="sr-only">First Name</label>
-                <label for="inputFName" class="sr-only">Disease</label>
-                <input name="disease" type="text" id="inputFName" class="form-control" placeholder="Disease" required autofocus><label for="inputFName" class="sr-only">First Name</label>
+                <input name="lname" type="text" id="inputLName" class="form-control" placeholder="Last Name" required autofocus>
+                <label for="inputAge" class="sr-only">Age</label>
+                <input type="text" name="age" id="inputAge" class="form-control" placeholder="Age" required autofocus>
+                <label for="inputGender"  class="sr-only">Gender</label>
+                <input name="gender" type="text" id="inputGender" class="form-control" placeholder="Gender" required autofocus>
+                <label for="inputContact" class="sr-only">Contact</label>
+                <input name="contact" type="text" id="inputContact" class="form-control" placeholder="Contact" required autofocus><label for="inputFName" class="sr-only">First Name</label>
+                <label for="inputDisease" class="sr-only">Disease</label>
+                <input name="disease" type="text" id="inputDisease" class="form-control" placeholder="Disease" required autofocus><label for="inputFName" class="sr-only">First Name</label>
                 
-                <label for="inputLName" class="sr-only">Location</label>
-                <input name="location" type="text" id="inputFName" class="form-control" placeholder="Location" required autofocus>
+                <label for="inputLocation" class="sr-only">Location</label>
+                <input name="location" type="text" id="inputLocation" class="form-control" placeholder="Location" required autofocus>
                 <label for="inputEmail" class="sr-only">Email address</label>
                 <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="text" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <label for="photo" ><i>Profile Picture</i></label>
+                <input name="photo" type="file" id="photo" class="form-control" placeholder="Profile Pic" required autofocus>
                 <div class="checkbox mb-3">
      
                 </div>

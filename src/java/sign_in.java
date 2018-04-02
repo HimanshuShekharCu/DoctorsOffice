@@ -11,6 +11,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import sun.java2d.cmm.Profile;
 
 /**
  *
@@ -38,12 +40,20 @@ public class sign_in extends HttpServlet {
             String password = request.getParameter("password");
             
            
-            
-            User u = UserDao.getUserByEmail("himanshu.shekharcu@gmail.com");
-            
+            User u = UserDao.getUserByEmail(email);
+           
+             HttpSession session=request.getSession();  
+            session.setAttribute("fname",u.getFName()); 
+            session.setAttribute("lname",u.getLName());
+            session.setAttribute("age",u.getAge());
+            session.setAttribute("gender",u.getGender());
+            session.setAttribute("contact",u.getContact());
+            session.setAttribute("disease",u.getDisease());
+            session.setAttribute("location",u.getLocation());
+            session.setAttribute("email",u.getEmail());
+            session.setAttribute("password",u.getPassword());
            if(email.equals(u.getEmail())){
-                 RequestDispatcher rd=request.getRequestDispatcher("profile.jsp");
-                 rd.forward(request, response);
+                 response.sendRedirect("profile.jsp");
            }
            else {
            out.print("2");

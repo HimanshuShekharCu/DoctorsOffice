@@ -3,7 +3,11 @@
     Created on : Apr 1, 2018, 12:24:15 PM
     Author     : himan
 --%>
-
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -53,8 +57,56 @@
                 </form>
               </div>
             </nav>
-        <div class="jumbotron">
-            
+        
+
+         <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3"><%=session.getAttribute("fname")%> <%=session.getAttribute("lname")%></h1>
+            <p><%=session.getAttribute("location")%></p>
+          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Personal Details</h2>
+            <ul>
+                <li><b>Age <%=session.getAttribute("age")%></b></li>
+                <li><b>Gender <%=session.getAttribute("gender")%></b></li>
+            </ul>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Meidcal Details</h2>
+            <ul>
+                <li><b>Old Diseases <%=session.getAttribute("disease")%></b></li>
+                <li><b>Allergy  NO</b></li>
+            </ul>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Contact Details</h2>
+            <ul>
+                <li><b>Contact <%=session.getAttribute("contact")%></b></li>
+                <li><b>Email <%=session.getAttribute("email")%></b></li>
+            </ul>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; Company 2017-2018</p>
+    </footer>
     </body>
 </html>

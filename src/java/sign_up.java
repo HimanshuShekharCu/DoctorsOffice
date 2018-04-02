@@ -5,11 +5,13 @@
  */
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -31,6 +33,7 @@ public class sign_up extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
             String fname= request.getParameter("fname");
             String lname= request.getParameter("lname");
             String age= request.getParameter("age");
@@ -40,7 +43,15 @@ public class sign_up extends HttpServlet {
             String location = request.getParameter("location");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            
+            Part photo = request.getPart("photo");
+            InputStream inputStream = null;
+            if (photo != null) {
+            // prints out some information for debugging
+             
+            // obtains input stream of the upload file
+             inputStream = photo.getInputStream();
+        }
+           
             User u = new User();
             u.setFName(fname);
             u.setLName(lname);
@@ -51,6 +62,7 @@ public class sign_up extends HttpServlet {
             u.setLocation(location);
             u.setContact(contact);
             u.setDisease(disease);
+            u.setImage(inputStream);
             
              int status=UserDao.save(u);  
         if(status>0){  

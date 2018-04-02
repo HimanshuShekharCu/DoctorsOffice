@@ -3,6 +3,11 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 public final class profile_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -41,6 +46,10 @@ public final class profile_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -92,6 +101,48 @@ public final class profile_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </form>\n");
       out.write("              </div>\n");
       out.write("            </nav>\n");
+      out.write("        \n");
+      out.write("\n");
+      out.write("         <main role=\"main\">\n");
+      out.write("\n");
+      out.write("      <!-- Main jumbotron for a primary marketing message or call to action -->\n");
+      out.write("      <div class=\"jumbotron\">\n");
+      out.write("        <div class=\"container\">\n");
+      out.write("          <h1 class=\"display-3\">Hello, world!</h1>\n");
+      out.write("          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>\n");
+      out.write("          <p><a class=\"btn btn-primary btn-lg\" href=\"#\" role=\"button\">Learn more &raquo;</a></p>\n");
+      out.write("        </div>\n");
+      out.write("      </div>\n");
+      out.write("\n");
+      out.write("      <div class=\"container\">\n");
+      out.write("        <!-- Example row of columns -->\n");
+      out.write("        <div class=\"row\">\n");
+      out.write("          <div class=\"col-md-4\">\n");
+      out.write("            <h2>Heading</h2>\n");
+      out.write("            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>\n");
+      out.write("            <p><a class=\"btn btn-secondary\" href=\"#\" role=\"button\">View details &raquo;</a></p>\n");
+      out.write("          </div>\n");
+      out.write("          <div class=\"col-md-4\">\n");
+      out.write("            <h2>Heading</h2>\n");
+      out.write("            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>\n");
+      out.write("            <p><a class=\"btn btn-secondary\" href=\"#\" role=\"button\">View details &raquo;</a></p>\n");
+      out.write("          </div>\n");
+      out.write("          <div class=\"col-md-4\">\n");
+      out.write("            <h2>Heading</h2>\n");
+      out.write("            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>\n");
+      out.write("            <p><a class=\"btn btn-secondary\" href=\"#\" role=\"button\">View details &raquo;</a></p>\n");
+      out.write("          </div>\n");
+      out.write("        </div>\n");
+      out.write("\n");
+      out.write("        <hr>\n");
+      out.write("\n");
+      out.write("      </div> <!-- /container -->\n");
+      out.write("\n");
+      out.write("    </main>\n");
+      out.write("\n");
+      out.write("    <footer class=\"container\">\n");
+      out.write("      <p>&copy; Company 2017-2018</p>\n");
+      out.write("    </footer>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
