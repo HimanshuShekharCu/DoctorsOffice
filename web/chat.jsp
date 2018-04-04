@@ -43,6 +43,8 @@
             ResultSet rs1 = null;
             
             User e = new User();
+            e.setMessage(message);
+            e.setEmail2(email2);
             
             con = DriverManager.getConnection(dbName, userId, password);
             String sql1 = "select * from chat where email=? ";
