@@ -11,10 +11,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        To whom you want to send ..
-        Write his eamil:
-        <input name="email2" type="text" >
-        
+       <form action= "chat.jsp" ><h3>To whom you want to send<h3>
+           <input type="text area" name="message">
+           <input type = "text" name="email2">
+        </form   
         <%@page import="java.sql.DriverManager"%>
         <%@page import="java.sql.ResultSet"%>
         <%@page import="java.sql.Statement"%>
@@ -38,11 +38,12 @@
             }
             
             Connection con  = null;
-            PreparedStatement ps2 = null;
+           
             PreparedStatement ps1 = null;
             ResultSet rs1 = null;
-            ResultSet rs2 = null;
+            
             User e = new User();
+            
             con = DriverManager.getConnection(dbName, userId, password);
             String sql1 = "select * from chat where email=? ";
             ps1.setString(1, e.getEmail1());
