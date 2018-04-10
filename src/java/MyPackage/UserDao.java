@@ -1,3 +1,6 @@
+package MyPackage;
+
+import java.io.InputStream;
 import java.util.*;  
 import java.sql.*;  
   
@@ -26,12 +29,15 @@ public class UserDao {
             ps.setString(7,e.getLocation());
             ps.setString(8,e.getEmail());
             ps.setString(9,e.getPassword());
-            ps.setBlob(10,e.getImage());
-              
+           
+            if(e.getImage()!=null){
+            ps.setBlob(10, e.getImage());
+            }  
+            
             status=ps.executeUpdate();  
               
             con.close();  
-        }catch(Exception ex){ex.printStackTrace();}  
+        }catch(SQLException ex){ex.printStackTrace();}  
           
         return status;  
     }  
@@ -89,6 +95,7 @@ public class UserDao {
                 e.setLocation(rs.getString("location"));
                 e.setEmail(rs.getString("email"));
                 e.setPassword(rs.getString("password"));
+                e.setImage((InputStream) rs.getBlob("photo"));
               
             }  
             con.close();  

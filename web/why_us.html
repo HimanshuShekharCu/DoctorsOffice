@@ -13,8 +13,8 @@ and open the template in the editor.
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-   
-    <title>Navbar Template for Bootstrap</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     
     <!-- Bootstrap core CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -43,6 +43,13 @@ and open the template in the editor.
            text-align: center;
        }
        
+       .js-section {
+           display: none;
+       }
+       
+       .js-section.is-active {
+           display: flex;
+       }
    </style>
     </head>
     <body>
@@ -76,34 +83,34 @@ and open the template in the editor.
         <div class="container-fluid">
         <div style="margin-left: 100px; margin-right: 100px; margin-top:40px;">
             <div class="row">
-                <div class="col-md-2 js-blocks">
+                <div class="col-md-2 js-blocks" id="elm1">
                     <h5>Fast Reply</h5></br>
                     <img src="img/Capture11.PNG">
                 </div>
-                <div class="col-md-2 js-blocks">
+                <div class="col-md-2 js-blocks" id="elm2">
                     <h5>24/7 service</h5></br>
                     <img src="img/Capture12.PNG">
                 </div>
-                <div class="col-md-2 js-blocks">
+                <div class="col-md-2 js-blocks" id="elm3">
                     <h5>Multiple Specialities </h5>
                     <img src="img/Capture13.PNG">
                 </div>
-                <div class="col-md-2 js-blocks">
+                <div class="col-md-2 js-blocks" id="elm4">
                     <h5>Private and Secure</h5>
                     <img src="img/Capture14.PNG">
                 </div>
-                <div class="col-md-2 js-blocks">
+                <div class="col-md-2 js-blocks" id="elm5">
                     <h5>Quality and Trust</h5>
                     <img src="img/Capture15.PNG">
                 </div>
-                <div class="col-md-2 js-blocks">
+                <div class="col-md-2 js-blocks" id="elm6">
                     <h5>Labs and Medicine</h5>
                     <img src="img/Capture16.PNG">
                 </div>
             </div>
             </div>
         </div>
-        <div class="row" id="elm" style="text-align: center; visibility: hidden;" onclick="myFunction()">
+        <div class="row js-section " id="dat1" style="text-align: center;">
             <div class="col-md-1"></div>
             <div class="col-md-6" style="margin-top: 80px; margin-bottom: 20px;padding-top: 30px;padding-bottom: 30px;">
                 <h3>Consult doctors in less than 30 minutes</h3>
@@ -113,7 +120,7 @@ and open the template in the editor.
                 <img src="img/Capture17.PNG">
             </div>
             </div>
-        <div class="row" id="elm" style="text-align: center; visibility: hidden;" onclick="myFunction()>
+        <div class="row js-section is-active" id="dat2" style="text-align: center;">
             <div class="col-md-5">
                 <img src="img/Capture18.PNG">
             </div>
@@ -124,7 +131,7 @@ and open the template in the editor.
             <div class="col-md-1"></div>
         </div>
         
-        <div class="row" id="elm" style="text-align: center;visibility: hidden;" onclick="myFunction()">
+        <div class="row js-section" id="dat3" style="text-align: center;" >
             <div class="col-md-1"></div>
             <div class="col-md-6" style="margin-top: 80px; margin-bottom: 20px;padding-top: 30px;padding-bottom: 30px;">
                 <h3>1200+ doctors are available in over 28 specialties</h3>
@@ -135,7 +142,7 @@ and open the template in the editor.
                 <img src="img/Capture19.PNG">
             </div>
         </div>
-        <div class="row" id="elm" style="text-align: center; visibility: hidden;" onclick="myFunction()">
+        <div class="row js-section" id="dat4" style="text-align: center;"  >
             <div class="col-md-5">
                 <img src="img/Capture20.PNG">
             </div>
@@ -145,7 +152,7 @@ and open the template in the editor.
             </div>
             <div class="col-md-1"></div>
         </div>
-        <div class="row" id="elm" style="text-align: center; visibility: hidden;" onclick="myFunction()">
+        <div class="row js-section" id="dat5" style="text-align: center; ">
             <div class="col-md-1"></div>
             <div class="col-md-6" style="padding-top: 30px;padding-bottom: 30px;margin-top: 80px; margin-bottom: 20px;">
                 <h3>Access the best specialist doctors in the country</h3>
@@ -155,7 +162,7 @@ and open the template in the editor.
                 <img src="img/Capture21.PNG">
             </div>
         </div>
-        <div class="row" id="elm" style="text-align: center; visibility: hidden;" onclick="myFunction()">
+        <div class="row js-section" id="dat6" style="text-align: center; ">
             <div class="col-md-5">
                 <img src="img/Capture22.PNG">
             </div>
@@ -165,11 +172,21 @@ and open the template in the editor.
             </div>
             <div class="col-md-1"></div>
         </div>
-
+        
         <script>
-            function myFunction() {
-    document.getElementsById("elm").style.visibility = "show";
-    }
+            $(document).ready(function () {
+                var jsSections = $(".js-section");
+                
+                $(".js-blocks").on('click', function () {
+                    var jsBlockIndex = $(this).index();
+                    
+                    for (var section of jsSections) {
+                        section.classList.remove('is-active')
+                    }
+                    
+                    jsSections[jsBlockIndex].classList.add('is-active');
+                });
+            });
         </script>
-    </body>
+</body>
 </html>

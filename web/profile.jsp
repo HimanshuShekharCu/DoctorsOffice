@@ -3,6 +3,8 @@
     Created on : Apr 1, 2018, 12:24:15 PM
     Author     : himan
 --%>
+    <%@ page import="MyPackage.User" %>
+    <%@ page import="MyPackage.UserDao" %>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -27,10 +29,47 @@
    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
    <link href="css/agency.min.css" rel="stylesheet">
    <style>
-      
+       
    </style>
     </head>
     <body>
+       <%
+            String email = (String)session.getAttribute("email") ;
+            String driverName = "com.mysql.jdbc.Driver";
+            String connectionUrl = "jdbc:mysql://localhost:3308/";
+            String dbName = "sys";
+            String userId = "root";
+            String password = "1234";
+
+            try {
+            Class.forName(driverName);
+            } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            }
+
+            Connection connection = null;
+            PreparedStatement ps = null;
+            ResultSet resultSet = null;
+        %>
+
+        <%
+        try{ 
+            User e = new User() ;
+        connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
+        String sql ="SELECT * FROM record where email=?";
+        ps=connection.prepareStatement(sql);
+        ps.setString(1, email);
+        resultSet = ps.executeQuery(sql);
+        while(resultSet.next()){
+        e.setImage(resultSet.getBinaryStream("photo"));
+        e.setFName(resultSet.getString("fname"));
+        }
+        out.print(e.getFName());
+
+} catch (Exception e) {
+e.printStackTrace();
+}
+%>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
                     <a class="navbar-brand" href="index.html">Home</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,12 +102,21 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <div class="container">
-            <h1 class="display-3"><%=session.getAttribute("fname")%> <%=session.getAttribute("lname")%></h1>
-            <p><%=session.getAttribute("location")%></p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-        </div>
-      </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="container">
+                        <h1 class="display-3"><%=session.getAttribute("fname")%><%=session.getAttribute("lname")%></h1>
+                        <p><%=session.getAttribute("location")%></p>
+                    </div>  
+                </div>
+                <div class="col-md-4">
+                          <div class="pro_pic">
+                              <img src="<%=session.getAttribute("photo")%>" width="150" height="150"/>
+                          </div>
+                </div>
+            </div>
+      </div>      
+      
 
       <div class="container">
         <!-- Example row of columns -->

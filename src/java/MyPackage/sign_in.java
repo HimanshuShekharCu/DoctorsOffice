@@ -1,3 +1,5 @@
+package MyPackage;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,19 +7,20 @@
  */
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.HttpSession;
+import sun.java2d.cmm.Profile;
 
 /**
  *
  * @author himan
  */
-public class sign_up extends HttpServlet {
+public class sign_in extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,47 +37,31 @@ public class sign_up extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             
-            String fname= request.getParameter("fname");
-            String lname= request.getParameter("lname");
-            String age= request.getParameter("age");
-            String gender= request.getParameter("gender");
-            String contact= request.getParameter("contact");
-            String disease = request.getParameter("disease");
-            String location = request.getParameter("location");
+          
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            Part photo = request.getPart("photo");
-            InputStream inputStream = null;
-            if (photo!= null) {
-            // prints out some information for debugging
-            System.out.println(photo.getName());
-            System.out.println(photo.getSize());
-            System.out.println(photo.getContentType()); 
-            // obtains input stream of the upload file
-             inputStream = photo.getInputStream();
-        }
+            
            
-            User u = new User();
-            u.setFName(fname);
-            u.setLName(lname);
-            u.setEmail(email);
-            u.setPassword(password);
-            u.setAge(age);
-            u.setGender(gender);
-            u.setLocation(location);
-            u.setContact(contact);
-            u.setDisease(disease);
-            u.setImage(inputStream);
+            User u = UserDao.getUserByEmail(email);
+           
+             HttpSession session=request.getSession();  
+            session.setAttribute("fname",u.getFName()); 
+            session.setAttribute("lname",u.getLName());
+            session.setAttribute("age",u.getAge());
+            session.setAttribute("gender",u.getGender());
+            session.setAttribute("contact",u.getContact());
+            session.setAttribute("disease",u.getDisease());
+            session.setAttribute("location",u.getLocation());
+            session.setAttribute("email",u.getEmail());
+            session.setAttribute("password",u.getPassword());
+            session.setAttribute("photo",u.getImage());
             
-             int status=UserDao.save(u);  
-        if(status>0){  
-            out.print("<p>Record saved successfully!</p>");  
-            request.getRequestDispatcher("index.html").include(request, response);  
-        }else{  
-            out.println("Sorry! unable to save record");  
-        }  
-          
-            
+           if(email.equals(u.getEmail())){
+                 response.sendRedirect("profile.jsp");
+           }
+           else {
+           out.print("2");
+           }
             
         }
     }
